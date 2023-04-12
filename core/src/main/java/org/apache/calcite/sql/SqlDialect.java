@@ -583,7 +583,8 @@ public class SqlDialect {
    * <code>can't{tab}run\</code> becomes <code>u'can''t\0009run\\'</code>.
    */
   public void quoteStringLiteralUnicode(StringBuilder buf, String val) {
-    buf.append("u&'");
+     buf.append("'").append(val);
+    /**buf.append("u&'");
     for (int i = 0; i < val.length(); i++) {
       char c = val.charAt(i);
       if (c < 32 || c >= 128) {
@@ -599,6 +600,7 @@ public class SqlDialect {
         buf.append(c);
       }
     }
+    */
     buf.append("'");
   }
 
